@@ -3,7 +3,7 @@
 from collections import defaultdict
 
 
-file = open("advent1a.txt", 'r')
+file = open("advent1.txt", 'r')
 inputs = [int(num) for num in file]
 result = sum(inputs)
 

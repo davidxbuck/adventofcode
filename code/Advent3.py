@@ -1,7 +1,7 @@
-# Advent of Code 2018 Day 2
+# Advent of Code 2018 Day 3
 
-from collections import defaultdict, Counter
 import re
+
 import pandas as pd
 
 # Data format example
@@ -24,19 +24,19 @@ maxheight = 1000
 
 # Check in case the width/height exceeds 1000 inches.
 for i, row in df.iterrows():
-    if row['x']+row['width'] > maxwidth: maxwidth = row['x']+row['width']
-    if row['y']+row['height'] > maxheight: maxheight = row['y']+row['height']
+    if row['x'] + row['width'] > maxwidth: maxwidth = row['x'] + row['width']
+    if row['y'] + row['height'] > maxheight: maxheight = row['y'] + row['height']
 print(maxwidth, maxheight)
 
 # Create grid
 
-blankgrid = [[ 0 for i in range(maxwidth)] for j in range(maxheight)]
+blankgrid = [[0 for i in range(maxwidth)] for j in range(maxheight)]
 grid = pd.DataFrame(data=blankgrid)
 print(grid.head())
 
 for i, row in df.iterrows():
-    for x in range(row['x'], row['x']+row['width']):
-        for y in range(row['y'], row['y']+row['height']):
+    for x in range(row['x'], row['x'] + row['width']):
+        for y in range(row['y'], row['y'] + row['height']):
             grid[x][y] += 1
 
 count = grid.stack().value_counts()
@@ -49,8 +49,8 @@ print(sum(count[2:]))
 goodclaims = []
 for i, row in df.iterrows():
     overlap = False
-    for x in range(row['x'], row['x']+row['width']):
-        for y in range(row['y'], row['y']+row['height']):
+    for x in range(row['x'], row['x'] + row['width']):
+        for y in range(row['y'], row['y'] + row['height']):
             if grid[x][y] > 1:
                 overlap = True
                 break

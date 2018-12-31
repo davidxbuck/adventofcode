@@ -7,8 +7,10 @@
 #
 # Read file and extract dependencies
 
-import matplotlib.pyplot as plt
 from collections import Counter
+
+import matplotlib.pyplot as plt
+
 file = open("Advent10.txt", 'r')
 input = [row for row in file]
 steps = [[int(step[10:16]), int(step[18:24]), int(step[36:38]), int(step[40:42])] for step in input]
@@ -24,7 +26,8 @@ def move():
         y[i] += steps[i][3]
     count_this = [i for i in y if i < 200 and i > -200]
     count = Counter(count_this)
-    if len(count) == 0: return 0
+    if len(count) == 0:
+        return 0
     else:
         return count[max(count, key=lambda k: count[k])]
 
@@ -41,11 +44,12 @@ def show(i):
     plt.scatter(x, Y, marker="X")
     plt.show()
 
+
 for j in range(10511):
     test = move()
-    if test >= 69:
+    if test >= 69:  # A bit specific to this test data but in general, look for convergence by the most
+        # points in a single vertical line
         print(j, test)
         show(j)
 print("Part1: Answer is displayed in Matplotlib output")
-print("Part2: Number of seconds is", j+1)
-
+print("Part2: Number of seconds is", j + 1)

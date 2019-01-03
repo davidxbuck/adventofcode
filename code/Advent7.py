@@ -27,7 +27,7 @@ for x in range(26):
     if x in second and first.count(x) == 0:
         laststep = x
 
-# first step for the mail loop is the Alphabetically first step with no dependencies
+# first step for the mail tick is the Alphabetically first step with no dependencies
 nextstep = abletorun.index(True)
 seq.append(chr(nextstep + 65))
 
@@ -100,7 +100,7 @@ while sum([nextsteps[x][1] for x in range(5)]) > 0:
                 alreadyrun[nextsteps[x][0]] = True
                 nextsteps[x][0] = None
 
-    # if all steps are running, loop
+    # if all steps are running, tick
 
     if all(nextsteps[x][1] > 0 for x in range(5)):
         continue

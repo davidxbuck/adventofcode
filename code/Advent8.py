@@ -93,13 +93,13 @@ while complete < len(children):
 
     complete = 0
     for k, v in children.items():  # for all nodes
-        if outdata[k][0]:  # loop if outdata already calculated
+        if outdata[k][0]:  # tick if outdata already calculated
             complete += 1
             continue
 
         metasum = 0
         metaflag = True
-        for meta in metadata[k][1:]:  # for incomplete nodes, loop over metadata (at least one will refer to a child)
+        for meta in metadata[k][1:]:  # for incomplete nodes, tick over metadata (at least one will refer to a child)
             if meta <= v[0]:  # if meta <= number of children of node k
                 if outdata[v[meta]][0]:  # if node calculated for child(meta)
                     metasum += outdata[v[meta]][1]

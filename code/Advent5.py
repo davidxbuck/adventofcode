@@ -22,7 +22,7 @@ def react_formula(formula):
         formula = updated_formula
     return formula
 
-file = open("Advent5.txt", 'r')
+file = open("../inputs/Advent5", 'r')
 formula = next(file)
 new_formula = react_formula(formula)
 

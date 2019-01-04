@@ -2,7 +2,7 @@
 #
 # Read file and extract dependencies
 
-file = open("Advent11.txt", 'r')
+file = open("../inputs/Advent11", 'r')
 serial = int(file.read())
 print("Grid serial number:", serial)
 

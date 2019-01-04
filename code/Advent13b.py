@@ -73,7 +73,7 @@ if __name__ == "__main__":
 
     # Read file and extract dependencies
 
-    file = open("Advent13.txt", 'r')
+    file = open("../inputs/Advent13", 'r')
     input = [row.replace("\n", "") for row in file]
 
     gridsize = 150

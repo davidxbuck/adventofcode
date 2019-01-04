@@ -3,7 +3,7 @@
 from collections import defaultdict, Counter
 
 
-file = open("Advent2.txt", 'r')
+file = open("../inputs/Advent2", 'r')
 inputs = [id[:-1] for id in file]
 
 twos = 0

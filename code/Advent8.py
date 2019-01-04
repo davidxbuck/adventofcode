@@ -39,7 +39,7 @@ def next_level():
     return me
 
 
-file = open("Advent8.txt", 'r')
+file = open("../inputs/Advent8", 'r')
 inp = map(int, file.read().split())
 # inp = iter([2,1,3,0,0,0,1,0,0,1,8,1,1,0,1,0,9,2,3,0,0,1,0,0,0,8,8,8,2]) # Test data
 # inp = iter([2, 3, 0, 3, 10, 11, 12, 1, 1, 0, 1, 99, 2, 1, 1, 2])

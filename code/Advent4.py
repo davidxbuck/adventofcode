@@ -9,7 +9,7 @@
 
 import re
 
-file = open("Advent4.txt", 'r')
+file = open("../inputs/Advent4", 'r')
 inputs = sorted([row for row in file])
 
 guards = {}

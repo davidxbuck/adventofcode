@@ -45,7 +45,7 @@ def play_game(players, value):
 
 # Read file and extract values
 
-file = open("Advent9.txt", 'r')
+file = open("../inputs/Advent9", 'r')
 inp = file.read().split()
 players = int(inp[0])
 value = int(inp[6])

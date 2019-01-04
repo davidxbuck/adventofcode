@@ -10,7 +10,7 @@ import pandas as pd
 # #1384 @ 64,36: 23x24
 # #1385 @ 735,608: 22x17
 # #1386 @ 760,38: 25x17
-file = open("Advent3.txt", 'r')
+file = open("../inputs/Advent3", 'r')
 inputs = [row for row in file]
 inpdata = []
 for line in inputs:

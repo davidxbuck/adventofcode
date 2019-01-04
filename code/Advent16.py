@@ -115,7 +115,7 @@ class Registers(object):
 
 if __name__ == "__main__":
 
-    file = open("Advent16.txt", 'r')
+    file = open("../inputs/Advent16", 'r')
 
     # Extract inputs
 

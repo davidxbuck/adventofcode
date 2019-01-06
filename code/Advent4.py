@@ -14,7 +14,7 @@ inputs = sorted([row for row in file])
 
 guards = {}
 
-for line in inputs:  # Extract numeric data from inputs
+for line in inputs:  # Extract numeric neighbours from inputs
 
     if "Guard" in line:
         match = re.search(r'\[(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})] Guard #(\d{1,})', line)

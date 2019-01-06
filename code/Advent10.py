@@ -47,7 +47,7 @@ def show(i):
 
 for j in range(10511):
     test = move()
-    if test >= 69:  # A bit specific to this test data but in general, look for convergence by the most
+    if test >= 69:  # A bit specific to this test neighbours but in general, look for convergence by the most
         # points in a single vertical line
         print(j, test)
         show(j)

@@ -10,11 +10,6 @@ neighbours = []
 # Calculate Manhattan distances and create sets of neighbours
 
 for ix, star in enumerate(stars):
-    # starlist = [ix]
-    # for index, calc in enumerate(stars):
-    #     if calc != star and sum([abs(calc[x] - star[x]) for x in range(4)]) <= 3:
-    #         starlist.append(index)
-    # neighbours.append(set(starlist))
     starlist = []
     for index, calc in enumerate(stars):
         if sum([abs(calc[x] - star[x]) for x in range(4)]) <= 3:

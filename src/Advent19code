@@ -1,0 +1,45 @@
+#ip 4
+
+0   addi 4 16 4  r4 = r4 + 16           go to 17 (16+1)
+1   seti 1 5 3   r3 = 1                 initialise loop counter y
+    2   seti 1 9 1   r1 = 1                initialise loop counter x
+        3   mulr 3 1 2   r2 = r1 * r3          product of r1 and r3 (x*y)
+        4   eqrr 2 5 2   if r2 == r5           if x*y == z:
+        5   addr 2 4 4   r4 = r2 + r4              go to 7 (6+1)
+        6   addi 4 1 4   r4 += 1               else: go to 8
+        7   addr 3 0 0   r0 = r0 + r3          add y to r0
+        8   addi 1 1 1   r1 += 1               increment x
+        9   gtrr 1 5 2   if r1 > r5            if x > z:
+        10  addr 4 2 4   r4 += r2                  go to 12 (11+1)
+        11  seti 2 9 4   r4 = 2                else: goto 3 (2+1)
+    12  addi 3 1 3   r3 += 1               increment y
+    13  gtrr 3 5 2   if r3 > r5:        if y > z:
+    14  addr 2 4 4   r4 += r2               goto 16 (15+1) (end program)
+    15  seti 1 8 4                      else: goto 1
+16  mulr 4 4 4                          end program
+    17  addi 5 2 5   r5 += 2                        Initialise R2, R5 (run once r0 = 0 or r0 = 1)
+    18  mulr 5 5 5   r5 = r5*r5                     "
+    19  mulr 4 5 5   r5 = r4*r5                     "
+    20  muli 5 11 5  r5 = r5*11                     "
+    21  addi 2 4 2   r2 += 4                        "
+    22  mulr 2 4 2   r2 = r2 * r4                   "
+    23  addi 2 5 2   r2 += 5                        "
+    24  addr 5 2 5   r5 = r2 + r5                   r2 = 93, r5 = 929
+    25  addr 4 0 4   r4 = r4 + r0 : if r0 == 1: goto 27 (26 + 1)
+26  seti 0 9 4   r4 = 0       : go to 1 (0+1)
+    27  setr 4 2 2   r2 = r4                        "
+    28  mulr 2 4 2   r2 = r2 * r4                   "
+    29  addr 4 2 2   r2 += r4                       "
+    30  mulr 4 2 2   r2 = r2 * r4                   "
+    31  muli 2 14 2  r2 *= 14                       "
+    32  mulr 2 4 2   r2 = r2 * r4                   r2 = 10550400
+    33  addr 5 2 5   r5 += r2                       r5 = 10551329 (z)
+    34  seti 0 0 0   r0 = 0                         r0 = 0
+    35  seti 0 8 4   r4 = 0        : go to 1 (0 + 1)
+
+    Summary:
+    Set z to 10551329
+    Loop x and y from 1 to z
+    If x*y = z, add y to r0
+    -> r0 contains a sum of the factors of z:
+    1 + 137 + 77017 + 10551329 = 10628484

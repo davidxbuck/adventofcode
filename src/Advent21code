@@ -1,0 +1,64 @@
+#ip 5
+
+ 0 seti 123 0 4         x = 123          | runonce
+ 1 bani 4 456 4         x & 456          |
+ 2 eqri 4 72 4          if x & 456 == 72:|
+ 3 addr 4 5 5               go to 5      |
+ 4 seti 0 0 5           else: go to 0    |
+
+ 5 seti 0 8 4           x = 0
+ 6 bori 4 65536 3           r3 = x | 65536 (1000000000000000..)
+ 7 seti 707129 0 4          x = 707129
+ 8 bani 3 255 2             r2 = r3 & 255
+ 9 addr 4 2 4               x = x + r2
+10 bani 4 16777215 4        x = x & 11111111111111
+11 muli 4 65899 4           x *= 4
+12 bani 4 16777215 4        x = x & 11111111111111
+13 gtir 256 3 2             if 256 > r3:
+14 addr 2 5 5                   go to 28
+15 addi 5 1 5               go to 17
+16 seti 27 6 5              null
+17 seti 0 7 2               y = 0
+18 addi 2 1 1                   r2 = y + 1
+19 muli 1 256 1                 1 *= 256
+20 gtrr 1 3 1                   if r1 > r3:
+21 addr 1 5 5                       go to 26
+22 addi 5 1 5                   else: go to 24
+23 seti 25 2 5                  null
+24 addi 2 1 2                   y += 1
+25 seti 17 1 5                  go to 18
+26 setr 2 4 3           3 = x + 2
+27 seti 7 4 5           go to 8
+28 eqrr 4 0 2           if x = r0:
+29 addr 2 5 5               end program
+30 seti 5 2 5           else: go to 6
+
+
+Simplified
+
+r4 = x
+r2 = y
+
+ 5 seti 0 8 4           x = 0
+ 6 bori 4 65536 3           r3 = x | 65536 (1000000000000000..)
+ 7 seti 707129 0 4          x = 707129
+ 8 bani 3 255 2             r2 = r3 & 255
+ 9 addr 4 2 4               x = x + r2
+10 bani 4 16777215 4        x = x & 11111111111111
+11 muli 4 65899 4           x *= 4
+12 bani 4 16777215 4        x = x & 11111111111111
+13 gtir 256 3 2             if 256 > r3:
+28 eqrr 4 0 2                   if x = r0:
+29 addr 2 5 5                       end program
+30 seti 5 2 5                   else: go to 6
+17 seti 0 7 2               y = 0
+18 addi 2 1 1                   r1 = y + 1
+19 muli 1 256 1                 r1 *= 256
+20 gtrr 1 3 1                   if r1 > r3:
+26 setr 2 4 3                       r3 = x + y
+27 seti 7 4 5                       go to 8
+24 addi 2 1 2                   y += 1
+25 seti 17 1 5                  go to 18
+
+
+

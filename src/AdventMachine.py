@@ -107,3 +107,13 @@ class Registers(object):
     def eqrr(self, opcode, inputA, inputB, outputC):
         self.set_registers(opcode, inputA, inputB, outputC)
         self.registers[self.output] = 1 if self.registers[self.inputA] == self.registers[self.inputB] else 0
+
+
+def read_program(advent_):
+    file = open("../inputs/%s" % advent_, 'r')
+    bound = int(next(file)[4])
+    print("Part 1 - Instructions are bound to register {}".format(bound))
+    # Extract program into dict
+    inputs = [row.strip("\n").split(' ') for row in file]
+    program = dict(enumerate([row[:1] + [int(x) for x in row[1:]] for row in inputs]))
+    return bound, program

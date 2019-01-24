@@ -4,7 +4,7 @@
 file = open("../inputs/Advent14", 'r')
 recipes = int(next(file).strip())
 recipelist = [int(i) for i in str(recipes)]
-print("Challenge input:", recipes)
+print("Challenge inputs:", recipes)
 
 class Elf(object):
 

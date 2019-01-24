@@ -42,7 +42,7 @@ if __name__ == "__main__":
                 input_phase = False
                 break
 
-    # Part 1 - Run every command against every input to discover possible opcodes vs output
+    # Part 1 - Run every command against every inputs to discover possible opcodes vs output
     commands = ["addr", "addi", "mulr", "muli", "banr", "bani", "borr", "bori", "setr", "seti", "gtir", "gtri", "gtrr",
                 "eqir", "eqri", "eqrr"]
     success = []

@@ -4,7 +4,7 @@ file = open("../inputs/Advent6", 'r')
 input_list = [row for row in file]
 inputs = []
 
-# Extract X, Y coordinates from input
+# Extract X, Y coordinates from inputs
 for row in input_list:
     x, y = row.split(", ")
     inputs.append([int(x), int(y)])

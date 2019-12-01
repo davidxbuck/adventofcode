@@ -1,0 +1,145 @@
+#ip 5
+
+ 5 seti 0 X E           E = 0
+ while $1
+ 6 bori E 65536 D           D = E | 65536
+ 7 seti 707129 X E          E = 707129
+ While $2
+ 8 bani D 255 C             C = D & 255
+ 9 addr E C E               E = E + C
+10 bani E 16777215 E        E = E & 16777215
+11 muli E 65899 E           E *= 4
+12 bani E 16777215 E        E = E & 16777215
+13 gtir 256 D C             if 256 > D:
+28 eqrr E A C                   if E = A:
+29 addr C IP IP                     return
+17 seti 0 X C               C = 0
+                            While $3
+18 addi C 1 B                   B = C + 1
+19 muli B 256 B                 B *= 256
+20 gtrr B D B                   if B > D:
+26 setr C X D                      D = C
+27 seti 7 X IP                        break # continue $2
+24 addi C 1 C                   C += 1
+25 seti 17 X IP                  continue$3
+
+
+
+#ip 5
+
+ 0 seti 123 X E         E = 123          | runonce
+ 1 bani E 456 E         E & 456          |
+ 2 eqri E 72 E          if E & 456 == 72:|
+ 3 addr E IP IP               go to 5     |
+ 4 seti 0 X IP           else: go to 0    |
+
+ 5 seti 0 X E           E = 0
+ 6 bori E 65536 D           D = E | 65536
+ 7 seti 707129 X E          E = 707129
+ 8 bani D 255 C             C = D & 255
+ 9 addr E C E               E = E + C
+10 bani E 16777215 E        E = E & 16777215
+11 muli E 65899 E           E *= 4
+12 bani E 16777215 E        E = E & 16777215
+13 gtir 256 D C             if 256 > D:
+14 addr C IP IP                   go to 28
+15 addi IP 1 IP               go to 17
+16 seti 27 X IP              null
+17 seti 0 X C               C = 0
+18 addi C 1 1                   C = C + 1
+19 muli B 256 B                 B *= 256
+20 gtrr B D B                   if B > D:
+21 addr B IP IP                       go to 26
+22 addi IP 1 IP                   else: go to 24
+23 seti 25 X IP                  null
+24 addi C 1 C                   C += 1
+25 seti 17 X IP                  go to 18
+26 setr C X D           D = C
+27 seti 7 X IP          go to 8
+28 eqrr E A C           if E = A:
+29 addr C IP IP               end program
+30 seti 5 X IP           else: go to 6
+
+#ip 5
+
+ 0 seti 123 0 4         E = 123          | runonce
+ 1 bani 4 456 4         E & 456          |
+ 2 eqri 4 72 4          if E & 456 == 72:|
+ 3 addr 4 5 5               go to 5      |
+ 4 seti 0 0 5           else: go to 0    |
+
+ 5 seti 0 8 4           E = 0
+ 6 bori 4 65536 3           D = E | 65536 (1000000000000000..)
+ 7 seti 707129 0 4          E = 707129
+ 8 bani 3 255 2             C = D & 255
+ 9 addr 4 2 4               E = E + C
+10 bani 4 16777215 4        E = E & 11111111111111
+11 muli 4 65899 4           E *= 4
+12 bani 4 16777215 4        E = E & 11111111111111
+13 gtir 256 3 2             if 256 > D:
+14 addr 2 5 5                   go to 28
+15 addi 5 1 5               go to 17
+16 seti 27 6 5              null
+17 seti 0 7 2               C = 0
+18 addi 2 1 1                   C = C + 1
+19 muli 1 256 1                 1 *= 256
+20 gtrr 1 3 1                   if B > D:
+21 addr 1 5 5                       go to 26
+22 addi 5 1 5                   else: go to 24
+23 seti 25 2 5                  null
+24 addi 2 1 2                   C += 1
+25 seti 17 1 5                  go to 18
+26 setr 2 4 3           D = C
+27 seti 7 4 5           go to 8
+28 eqrr 4 0 2           if E = A:
+29 addr 2 5 5               end program
+30 seti 5 2 5           else: go to 6
+
+
+Simplified
+
+E = E
+C = C
+
+ 5 seti 0 8 4           E = 0
+ 6 bori 4 65536 3           D = E | 65536 (1000000000000000..)
+ 7 seti 707129 0 4          E = 707129
+ 8 bani 3 255 2             C = D & 255
+ 9 addr 4 2 4               E = E + C
+10 bani 4 16777215 4        E = E & 11111111111111
+11 muli 4 65899 4           E *= 4
+12 bani 4 16777215 4        E = E & 11111111111111
+13 gtir 256 3 2             if 256 > D:
+28 eqrr 4 0 2                   if E = A:
+29 addr 2 5 5                       end program
+30 seti 5 2 5                   else: go to 6
+17 seti 0 7 2               C = 0
+18 addi 2 1 1                   B = C + 1
+19 muli 1 256 1                 B *= 256
+20 gtrr 1 3 1                   if B > D:
+26 setr 2 4 3                       D = C
+27 seti 7 4 5                   go to 8
+24 addi 2 1 2                   C += 1
+25 seti 17 1 5                  go to 18
+
+
+
+ 5 seti 0 8 4           E = 0
+ 6 bori 4 65536 3           D = E | 65536 (1000000000000000..)
+ 7 seti 707129 0 4          E = 707129
+ 8 bani 3 255 2             C = D & 255
+ 9 addr 4 2 4               E = E + C
+10 bani 4 16777215 4        E = E & 11111111111111
+11 muli 4 65899 4           E *= 4
+12 bani 4 16777215 4        E = E & 11111111111111
+13 gtir 256 3 2             if 256 > D:
+                                Value Out
+                                go to 6
+17 seti 0 7 2               C = 0
+18 addi 2 1 1                   B = C + 1
+19 muli 1 256 1                 B *= 256
+20 gtrr 1 3 1                   if B > D:
+26 setr 2 4 3                       D = C
+27 seti 7 4 5                   go to 8
+24 addi 2 1 2                   C += 1
+25 seti 17 1 5                  go to 18

@@ -1,7 +1,7 @@
 # Advent of Code 2018 Day 25
 #
 
-# Read file and extract stars
+# Read file and extract nanobots
 
 file = open("../inputs/Advent25", 'r')
 stars = [list(map(int, row.strip().split(","))) for row in file]

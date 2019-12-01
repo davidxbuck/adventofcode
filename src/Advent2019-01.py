@@ -6,5 +6,5 @@ weights = list(map(int, [weight.strip() for weight in open('../inputs2019/Advent
 fuelcalc = lambda x: x // 3 - 2
 print(f'AoC 2019 Day 1, Part 1 answer is {sum(map(fuelcalc, weights))}')
 
-fuel = lambda x: x > 0 and fuelcalc(x) + max(fuel(fuelcalc(x)), 0)
+fuel = lambda x: x > 0 and (y := fuelcalc(x)) + max(fuel(y), 0)
 print(f'AoC 2019 Day 1, Part 2 answer is {sum(map(fuel, weights))}')

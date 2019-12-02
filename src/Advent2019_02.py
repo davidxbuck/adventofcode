@@ -3,13 +3,15 @@
 # From https://adventofcode.com/2019/day/2
 #
 
+# Givens from the problem
+
 NOUN = 12
 VERB = 2
 OUTPUT = 19690720
 
 
 class Intcode(object):
-    def __init__(self, program, noun, verb, pointer=0):
+    def __init__(self, program, noun=0, verb=0, pointer=0):
         self.pointer = pointer
         self.program = program
         self.program[1:3] = noun, verb
@@ -30,7 +32,8 @@ class Intcode(object):
         while not self.terminated:
             # print(f"Executing: {self.pointer} {self.program[self.pointer:self.pointer + 4]}")
             exec(f"self.cmd{self.program[self.pointer]}()")
-            self.pointer += 4
+            if not self.terminated:
+                self.pointer += 4
         return self.program[0]
 
 
@@ -58,6 +61,8 @@ def main():
     print(f'AoC 2019 Day 2, Part 1 answer is {Intcode(inputs[:], NOUN, VERB).run()}')
 
     # determine whether to iterate nouns or verbs first, whichever has the greatest effect on result:
+    # Would be an O(2n) solution rather than a nested loop O(n**2) solution
+
     if Intcode(inputs[:], NOUN + 1, VERB).run() > Intcode(inputs[:], NOUN, VERB + 1).run():
         noun, verb, result = iterate_noun(inputs[:], NOUN, VERB)
         noun, verb, result = iterate_verb(inputs[:], noun, VERB)

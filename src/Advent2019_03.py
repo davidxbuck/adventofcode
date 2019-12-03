@@ -79,30 +79,30 @@ distances = [abs(x - central_port[0]) + abs(y - central_port[1]) for x, y in int
 
 print(f'AoC 2019 Day 2, Part 1 Nearest intersection is: {intersections[distances.index(min(distances))]} at a distance of {min(distances)}')
 
+# Repeat mapping of both circuits but capture the number of total number of moves for each datapoint
 
+grid = np.zeros([x_width, y_height], dtype=int)
 for line in inputs:
     x, y = central_port
-    counter = count()
-    grid = np.zeros([x_width, y_height], dtype=int)
+    counter = count(1)
     for move in line:
         left, up, right, down = (move[0] == 'L', move[0] == 'U', move[0] == 'R', move[0] == 'D')
         distance = int(move[1:])
         if left:
-            grid[x - distance:x, y] = list(islice(counter, distance))
+            grid[x - distance:x, y] += list(islice(counter, distance))
             x -= int(distance)
         elif up:
-            grid[x:x + 1, y + 1:y + distance + 1] = list(islice(counter, distance))
+            grid[x:x + 1, y + 1:y + distance + 1] += list(islice(counter, distance))
             y += int(distance)
         elif right:
-            grid[x + 1:x + distance + 1, y] = list(islice(counter, distance))
+            grid[x + 1:x + distance + 1, y] += list(islice(counter, distance))
             x += int(distance)
         elif down:
-            grid[x, y - distance:y] = list(islice(counter, distance))
+            grid[x, y - distance:y] += list(islice(counter, distance))
             y -= int(distance)
-    intergrid += grid
 
-# Determine coordinates of intersections and Manhattan Distances from control point
+# Determine the min of the number of moves for each of the known interestions
 
-moves = [intergrid[x, y] for x, y in intersections]
+moves = [grid[x, y] for x, y in intersections]
 
 print(f'AoC 2019 Day 2, Part 2 Nearest intersection is: {min(moves)} steps ')

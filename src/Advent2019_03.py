@@ -2,8 +2,9 @@
 #
 # From https://adventofcode.com/2019/day/3
 #
-import numpy as np
 from itertools import count, islice
+
+import numpy as np
 
 with open('../inputs2019/Advent2019_03.txt', 'r') as f:
     inputs = [line.strip().split(',') for line in f]
@@ -19,7 +20,7 @@ with open('../inputs2019/Advent2019_03.txt', 'r') as f:
 #           ['U98','R91','D20','R16','D67','R40','U7','R15','U6','R7']]
 #
 
-# Find grid size
+# Rather than guess an enormous grid size, evaluate the max size from the inputs
 
 rightmax = leftmax = upmax = downmax = 0
 
@@ -44,13 +45,12 @@ for line in inputs:
 # Rebase grid at 0,0 and set central_port
 x_width = rightmax - leftmax + 1
 y_height = upmax - downmax + 1
-
 central_port = [-leftmax, -downmax]
 
-intergrid = np.zeros([x_width, y_height], dtype=int)
+
 
 # Map each circuit and combine to find intersections
-
+intergrid = np.zeros([x_width, y_height], dtype=int)
 for line in inputs:
     x, y = central_port
     grid = np.zeros([x_width, y_height], dtype=int)

@@ -1,6 +1,6 @@
 import pytest
 
-from Advent2019_02 import Intcode
+from Advent2019_Intcode import Intcode
 
 
 class TestIntcode():

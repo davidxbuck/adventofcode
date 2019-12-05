@@ -16,13 +16,11 @@ class TestIntcode():
         assert code.pointer == 0
         assert not code.terminated
 
-
     def test_cmd01_position(self):
         code = Intcode([1, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50], 9, 10)
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd01()
-        assert not code.parameters
         assert code.program == [1, 9, 10, 70, 2, 3, 11, 0, 99, 30, 40, 50]
         assert code.pointer == 4
         assert not code.terminated
@@ -32,7 +30,6 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd01()
-        assert code.parameters
         assert code.parm1
         assert not code.parm2
         assert not code.parm3
@@ -45,7 +42,6 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd01()
-        assert code.parameters
         assert not code.parm1
         assert code.parm2
         assert not code.parm3
@@ -58,7 +54,6 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd01()
-        assert code.parameters
         assert code.parm1
         assert code.parm2
         assert not code.parm3
@@ -72,7 +67,6 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd02()
-        assert not code.parameters
         assert code.program == [150, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50]
         assert code.pointer == 8
         assert not code.terminated
@@ -83,7 +77,6 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd02()
-        assert code.parameters
         assert code.parm1
         assert not code.parm2
         assert not code.parm3
@@ -97,7 +90,6 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd02()
-        assert code.parameters
         assert not code.parm1
         assert code.parm2
         assert not code.parm3
@@ -111,7 +103,6 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd02()
-        assert code.parameters
         assert code.parm1
         assert code.parm2
         assert not code.parm3
@@ -126,7 +117,6 @@ class TestIntcode():
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd03()
         assert code.inp == 5
-        assert not code.parameters
         assert not code.parm1
         assert not code.parm2
         assert not code.parm3
@@ -140,7 +130,6 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd05()
-        assert not code.parameters
         assert code.program == [5, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50]
         assert code.pointer == 40
         assert not code.terminated
@@ -151,7 +140,6 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd05()
-        assert not code.parameters
         assert code.program == [5, 7, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50]
         assert code.pointer == 3
         assert not code.terminated
@@ -162,7 +150,6 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd06()
-        assert not code.parameters
         assert code.program == [6, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50]
         assert code.pointer == 3
         assert not code.terminated
@@ -173,7 +160,6 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd06()
-        assert not code.parameters
         assert code.program == [6, 7, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50]
         assert code.pointer == 40
         assert not code.terminated
@@ -184,7 +170,6 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd07()
-        assert not code.parameters
         assert code.program == [7, 7, 10, 1, 2, 3, 11, 0, 99, 30, 40, 50]
         assert code.pointer == 4
         assert not code.terminated
@@ -195,7 +180,6 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd07()
-        assert not code.parameters
         assert code.program == [7, 10, 10, 0, 2, 3, 11, 0, 99, 30, 40, 50]
         assert code.pointer == 4
         assert not code.terminated
@@ -206,7 +190,6 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd08()
-        assert not code.parameters
         assert code.program == [7, 7, 10, 0, 2, 3, 11, 0, 99, 30, 40, 50]
         assert code.pointer == 4
         assert not code.terminated
@@ -217,7 +200,6 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd08()
-        assert not code.parameters
         assert code.program == [7, 10, 10, 1, 2, 3, 11, 0, 99, 30, 40, 50]
         assert code.pointer == 4
         assert not code.terminated
@@ -239,25 +221,25 @@ class TestIntcode():
         assert code.terminated
 
     def test_prog_2(self):
-        code = Intcode([2,3,0,3,99], 3)
+        code = Intcode([2, 3, 0, 3, 99], 3)
         result = code.run()
         assert result == 2
-        assert code.program == [2,3,0,6,99]
+        assert code.program == [2, 3, 0, 6, 99]
         assert code.pointer == 4
         assert code.terminated
 
     def test_prog_3(self):
-        code = Intcode([2,4,4,5,99,0], 4, 4)
+        code = Intcode([2, 4, 4, 5, 99, 0], 4, 4)
         result = code.run()
         assert result == 2
-        assert code.program == [2,4,4,5,99,9801]
+        assert code.program == [2, 4, 4, 5, 99, 9801]
         assert code.pointer == 4
         assert code.terminated
 
     def test_prog_4(self):
-        code = Intcode([1,1,1,4,99,5,6,0,99], 1, 1)
+        code = Intcode([1, 1, 1, 4, 99, 5, 6, 0, 99], 1, 1)
         result = code.run()
         assert result == 30
-        assert code.program == [30,1,1,4,2,5,6,0,99]
+        assert code.program == [30, 1, 1, 4, 2, 5, 6, 0, 99]
         assert code.pointer == 8
         assert code.terminated

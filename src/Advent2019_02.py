@@ -30,7 +30,7 @@ def iterate_verb(inputs, noun, verb_):
 
 
 def main():
-    inputs = list(map(int, [mass.strip().split(',') for mass in open('../inputs2019/Advent2019-02.txt', 'r')][0]))
+    inputs = list(map(int, [mass.strip().split(',') for mass in open('../inputs2019/Advent2019_02.txt', 'r')][0]))
 
     print(f'AoC 2019 Day 2, Part 1 answer is {Intcode(inputs[:], NOUN, VERB).run()}')
 

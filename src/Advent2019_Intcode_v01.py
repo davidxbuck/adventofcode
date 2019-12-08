@@ -7,20 +7,13 @@
 
 
 class Intcode(object):
-    def __init__(self, program, noun=-1, verb=-1, pointer=0, inp=[0], mode='diagnostic'):
-        if inp is None:
-            inp = [0]
+    def __init__(self, program, noun=-1, verb=-1, pointer=0, inp=0):
         self.pointer = pointer
         self.program = program
         if noun > 0 and verb > 0:
             self.program[1:3] = noun, verb
         self.terminated = False
         self.inp = inp
-        self.inp_pos = 0
-        self.diagnostic = True if mode=='diagnostic' else False
-        self.output = -1
-    def next_inp(self, inp):
-        self.inp.append(inp)
 
     def get_vals(self):
         val1 = self.program[self.pointer + 1] if self.parm1 else self.program[self.program[self.pointer + 1]]
@@ -41,17 +34,12 @@ class Intcode(object):
         self.pointer += 4
 
     def cmd03(self):
-        self.program[self.program[self.pointer + 1]] = self.inp[self.inp_pos]
-        # print(f'Input received {self.inp[self.inp_pos]}')
-        self.inp_pos += 1
+        self.program[self.program[self.pointer + 1]] = self.inp
         self.pointer += 2
 
     def cmd04(self):
         out = self.program[self.pointer + 1] if self.parm1 else self.program[self.program[self.pointer + 1]]
-        if self.diagnostic:
-            print(f"Diagnostic Code: {out}")
-        else:
-            self.output = out
+        print(f"Diagnostic Code: {out}")
         self.pointer += 2
 
     def cmd05(self):
@@ -88,8 +76,4 @@ class Intcode(object):
             self.parm3, self.parm2, self.parm1 = map(int, (operation[0:3]))
             self.opcode = operation[3:5]
             exec(f"self.cmd{self.opcode}()")
-            if self.output != -1:
-                out = self.output
-                self.output = -1
-                return out, self.terminated
-        return self.program[0], self.terminated
+        return self.program[0]

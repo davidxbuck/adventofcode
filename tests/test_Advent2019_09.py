@@ -1,18 +1,18 @@
 # pytest tests
 
 from Advent2019_Intcode import Intcode
-
+from collections import defaultdict
 
 class TestIntcode():
     def test_instantiate(self):
         code = Intcode([1, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50])
-        assert code.program[:-1000] == [1, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([1, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50]))
         assert code.pointer == 0
         assert not code.terminated
 
     def test_instantiate_noun_and_verb(self):
         code = Intcode([1, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50], 33, 66)
-        assert code.program[:-1000] == [1, 33, 66, 3, 2, 3, 11, 0, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([1, 33, 66, 3, 2, 3, 11, 0, 99, 30, 40, 50]))
         assert code.pointer == 0
         assert not code.terminated
 
@@ -21,7 +21,7 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd01()
-        assert code.program[:-1000] == [1, 9, 10, 70, 2, 3, 11, 0, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([1, 9, 10, 70, 2, 3, 11, 0, 99, 30, 40, 50]))
         assert code.pointer == 4
         assert not code.terminated
 
@@ -33,7 +33,7 @@ class TestIntcode():
         assert code.parm1
         assert not code.parm2
         assert not code.parm3
-        assert code.program[:-1000] == [101, 9, 10, 49, 2, 3, 11, 0, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([101, 9, 10, 49, 2, 3, 11, 0, 99, 30, 40, 50]))
         assert code.pointer == 4
         assert not code.terminated
 
@@ -45,7 +45,7 @@ class TestIntcode():
         assert not code.parm1
         assert code.parm2
         assert not code.parm3
-        assert code.program[:-1000] == [1001, 9, 10, 40, 2, 3, 11, 0, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([1001, 9, 10, 40, 2, 3, 11, 0, 99, 30, 40, 50]))
         assert code.pointer == 4
         assert not code.terminated
 
@@ -57,7 +57,7 @@ class TestIntcode():
         assert code.parm1
         assert code.parm2
         assert not code.parm3
-        assert code.program[:-1000] == [1101, 9, 10, 19, 2, 3, 11, 0, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([1101, 9, 10, 19, 2, 3, 11, 0, 99, 30, 40, 50]))
         assert code.pointer == 4
         assert not code.terminated
 
@@ -70,7 +70,7 @@ class TestIntcode():
         assert code.parm1
         assert not code.parm2
         assert not code.parm3
-        assert code.program[:-1000] == [201, 9, 10, 80, 2, 3, 11, 0, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([201, 9, 10, 80, 2, 3, 11, 0, 99, 30, 40, 50]))
         assert code.pointer == 4
         assert not code.terminated
 
@@ -80,7 +80,7 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd02()
-        assert code.program[:-1000] == [150, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([150, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50]))
         assert code.pointer == 8
         assert not code.terminated
 
@@ -93,7 +93,7 @@ class TestIntcode():
         assert code.parm1
         assert not code.parm2
         assert not code.parm3
-        assert code.program[:-1000] == [250, 9, 10, 3, 102, 5, 11, 0, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([250, 9, 10, 3, 102, 5, 11, 0, 99, 30, 40, 50]))
         assert code.pointer == 8
         assert not code.terminated
 
@@ -106,7 +106,7 @@ class TestIntcode():
         assert not code.parm1
         assert code.parm2
         assert not code.parm3
-        assert code.program[:-1000] == [132, 9, 10, 12, 1002, 3, 11, 0, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([132, 9, 10, 12, 1002, 3, 11, 0, 99, 30, 40, 50]))
         assert code.pointer == 8
         assert not code.terminated
 
@@ -119,7 +119,7 @@ class TestIntcode():
         assert code.parm1
         assert code.parm2
         assert not code.parm3
-        assert code.program[:-1000] == [33, 9, 10, 12, 1102, 3, 11, 0, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([33, 9, 10, 12, 1102, 3, 11, 0, 99, 30, 40, 50]))
         assert code.pointer == 8
         assert not code.terminated
 
@@ -133,7 +133,7 @@ class TestIntcode():
         assert not code.parm1
         assert not code.parm2
         assert not code.parm3
-        assert code.program[:-1000] == [3, 2, 5, 12, 1102, 3, 11, 0, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([3, 2, 5, 12, 1102, 3, 11, 0, 99, 30, 40, 50]))
         assert code.pointer == 2
         assert not code.terminated
 
@@ -143,7 +143,7 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd05()
-        assert code.program[:-1000] == [5, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([5, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50]))
         assert code.pointer == 40
         assert not code.terminated
 
@@ -153,7 +153,7 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd05()
-        assert code.program[:-1000] == [5, 7, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([5, 7, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50]))
         assert code.pointer == 3
         assert not code.terminated
 
@@ -163,7 +163,7 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd06()
-        assert code.program[:-1000] == [6, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([6, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50]))
         assert code.pointer == 3
         assert not code.terminated
 
@@ -173,7 +173,7 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd06()
-        assert code.program[:-1000] == [6, 7, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([6, 7, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50]))
         assert code.pointer == 40
         assert not code.terminated
 
@@ -183,7 +183,7 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd07()
-        assert code.program[:-1000] == [7, 7, 10, 1, 2, 3, 11, 0, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([7, 7, 10, 1, 2, 3, 11, 0, 99, 30, 40, 50]))
         assert code.pointer == 4
         assert not code.terminated
 
@@ -193,7 +193,7 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd07()
-        assert code.program[:-1000] == [7, 10, 10, 0, 2, 3, 11, 0, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([7, 10, 10, 0, 2, 3, 11, 0, 99, 30, 40, 50]))
         assert code.pointer == 4
         assert not code.terminated
 
@@ -203,7 +203,7 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd08()
-        assert code.program[:-1000] == [7, 7, 10, 0, 2, 3, 11, 0, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([7, 7, 10, 0, 2, 3, 11, 0, 99, 30, 40, 50]))
         assert code.pointer == 4
         assert not code.terminated
 
@@ -213,7 +213,7 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd08()
-        assert code.program[:-1000] == [7, 10, 10, 1, 2, 3, 11, 0, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([7, 10, 10, 1, 2, 3, 11, 0, 99, 30, 40, 50]))
         assert code.pointer == 4
         assert not code.terminated
 
@@ -224,7 +224,7 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd09()
-        assert code.program[:-1000] == [9, 7, 10, 3, 2, 3, 11, 13, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([9, 7, 10, 3, 2, 3, 11, 13, 99, 30, 40, 50]))
         assert code.pointer == 2
         assert code.relative_base == 13
         assert not code.terminated
@@ -236,7 +236,7 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd09()
-        assert code.program[:-1000] == [109, 7, 10, 3, 2, 3, 11, 13, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([109, 7, 10, 3, 2, 3, 11, 13, 99, 30, 40, 50]))
         assert code.pointer == 2
         assert code.relative_base == 7
         assert not code.terminated
@@ -248,7 +248,7 @@ class TestIntcode():
         operation = f'{code.program[code.pointer]:>05}'
         code.parm3, code.parm2, code.parm1 = map(int, tuple(operation[0:3]))
         code.cmd09()
-        assert code.program[:-1000] == [209, 7, 10, 3, 2, 3, 11, 13, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([209, 7, 10, 3, 2, 3, 11, 13, 99, 30, 40, 50]))
         assert code.pointer == 2
         assert code.relative_base == 100
         assert not code.terminated
@@ -257,7 +257,7 @@ class TestIntcode():
         code = Intcode([1, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50], 9, 10)
         code.pointer = 8
         code.cmd99()
-        assert code.program[:-1000] == [1, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50]
+        assert code.program == defaultdict(int, enumerate([1, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50]))
         assert code.pointer == 8
         assert code.terminated
 
@@ -265,7 +265,7 @@ class TestIntcode():
         code = Intcode([1, 0, 0, 0, 99])
         result = code.run()
         assert result == (2, True)
-        assert code.program[:-1000] == [2, 0, 0, 0, 99]
+        assert code.program == defaultdict(int, enumerate([2, 0, 0, 0, 99]))
         assert code.pointer == 4
         assert code.terminated
 
@@ -273,7 +273,7 @@ class TestIntcode():
         code = Intcode([2, 3, 0, 3, 99], 3)
         result = code.run()
         assert result == (2, True)
-        assert code.program[:-1000] == [2, 3, 0, 6, 99]
+        assert code.program == defaultdict(int, enumerate([2, 3, 0, 6, 99]))
         assert code.pointer == 4
         assert code.terminated
 
@@ -281,7 +281,7 @@ class TestIntcode():
         code = Intcode([2, 4, 4, 5, 99, 0], 4, 4)
         result = code.run()
         assert result == (2, True)
-        assert code.program[:-1000] == [2, 4, 4, 5, 99, 9801]
+        assert code.program == defaultdict(int, enumerate([2, 4, 4, 5, 99, 9801]))
         assert code.pointer == 4
         assert code.terminated
 
@@ -289,7 +289,7 @@ class TestIntcode():
         code = Intcode([1, 1, 1, 4, 99, 5, 6, 0, 99], 1, 1)
         result = code.run()
         assert result == (30, True)
-        assert code.program[:-1000] == [30, 1, 1, 4, 2, 5, 6, 0, 99]
+        assert code.program == defaultdict(int, enumerate([30, 1, 1, 4, 2, 5, 6, 0, 99]))
         assert code.pointer == 8
         assert code.terminated
 

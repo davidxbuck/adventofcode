@@ -7,15 +7,15 @@
 # From https://adventofcode.com/2019/day/7
 # From https://adventofcode.com/2019/day/9
 
-
+from collections import defaultdict
 class Intcode(object):
     def __init__(self, program, noun=-1, verb=-1, pointer=0, inp=[0], mode='diagnostic'):
         if inp is None:
             inp = [0]
         self.pointer = pointer
-        self.program = program + [0] * 1000
+        self.program = defaultdict(int, enumerate(program))
         if noun > 0 and verb > 0:
-            self.program[1:3] = noun, verb
+            self.program[1], self.program[2] = noun, verb
         self.terminated = False
         self.inp = inp
         self.inp_pos = 0

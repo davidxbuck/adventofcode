@@ -94,5 +94,5 @@ for x in range(1, 10000000):
     if not axis:
         break
 
-print(f'AoC 2019 Day 12 Part 2: {np.lcm.reduce(np.lcm.reduce(periodicity))}')
+print(f'AoC 2019 Day 12 Part 2: {np.lcm.reduce(periodicity)}')
 print()

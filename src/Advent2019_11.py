@@ -10,9 +10,6 @@ from Advent2019_Intcode import Intcode
 
 def main():
     inputs = list(map(int, [code.strip().split(',') for code in open('../inputs2019/Advent2019_11.txt', 'r')][0]))
-    # inputs = [109, 1, 204, -1, 1001, 100, 1, 100, 1008, 100, 16, 101, 1006, 101, 0, 99]
-    # inputs = [1102, 34915192, 34915192, 7, 4, 7, 99, 0]
-    # inputs = [104, 1125899906842624, 99]
 
     grid, boolgrid = painting_robot(inputs, 0)
     plt.imshow(np.rot90(grid))
@@ -30,7 +27,7 @@ def main():
     plt.show()
 
 
-def painting_robot(inputs, start):
+def painting_robot(inputs: list, start: int) -> (np.array, np.array):
     grid = np.zeros([50, 65], dtype=int)
     boolgrid = np.zeros([50, 65], dtype=bool)
     robot_pos = np.array([0, 20])

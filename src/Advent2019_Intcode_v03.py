@@ -21,7 +21,7 @@ class Intcode(object):
         self.inp_pos = 0
         self.diagnostic = True if mode.lower() == 'diagnostic' else False
         self.test = True if mode.lower() == 'test' else False
-        self.output = -99999
+        self.output = -1
         self.relative_base = 0
 
     @property
@@ -128,9 +128,9 @@ class Intcode(object):
             self.parm3, self.parm2, self.parm1 = map(int, (operation[0:3]))
             self.opcode = operation[3:5]
             exec(f"self.cmd{self.opcode}()")
-            if self.output != -99999:
+            if self.output != -1:
                 out = self.output
-                self.output = -99999
+                self.output = -1
                 return out, self.terminated
         if self.test:
             return self.testout

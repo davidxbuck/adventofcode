@@ -58,41 +58,40 @@ class System(object):
     def total(self):
         return sum(moon.kinetic * moon.potential for moon in self.moons)
 
-with open('../inputs2019/Advent2019_12.txt', 'r') as f:
 
-    input_moons = [list(map(int, re.findall(r"^<x=(-?\d+), y=(-?\d+), z=(-?\d+)>$", x.strip())[0])) for x in f]
+def main():
+    with open('../inputs2019/Advent2019_12.txt', 'r') as f:
 
-system = System()
-for moon in input_moons[:]:
-    system.add_moon(moon)
-
-for x in range(1000):
-    system.gravity()
-    system.velocity()
-
-print(f'AoC 2019 Day 12 Part 1: {system.total}')
-
-system = System()
-for moon in input_moons[:]:
-    system.add_moon(moon)
-
-periodicity = [0, 0, 0]
-next_axis = [0, 1, 2]
-axis = next_axis[:]
-start_positions = np.array([moon.positions[:] for moon in system.moons]).transpose()
-start_velocities = np.array([moon.velocities[:] for moon in system.moons]).transpose()
-
-for x in range(1, 10000000):
-    system.gravity()
-    system.velocity()
-    for axis in axis:
-        if all([moon.positions[axis] for moon in system.moons] == start_positions[axis]) and all(
-                [moon.velocities[axis] for moon in system.moons] == start_velocities[axis]):
-            periodicity[axis] = x
-            next_axis.remove(axis)
+        input_moons = [list(map(int, re.findall(r"^<x=(-?\d+), y=(-?\d+), z=(-?\d+)>$", x.strip())[0])) for x in f]
+    system = System()
+    for moon in input_moons[:]:
+        system.add_moon(moon)
+    for x in range(1000):
+        system.gravity()
+        system.velocity()
+    print(f'AoC 2019 Day 12 Part 1: {system.total}')
+    system = System()
+    for moon in input_moons[:]:
+        system.add_moon(moon)
+    periodicity = [0, 0, 0]
+    next_axis = [0, 1, 2]
     axis = next_axis[:]
-    if not axis:
-        break
+    start_positions = np.array([moon.positions[:] for moon in system.moons]).transpose()
+    start_velocities = np.array([moon.velocities[:] for moon in system.moons]).transpose()
+    for x in range(1, 10000000):
+        system.gravity()
+        system.velocity()
+        for axis in axis:
+            if all([moon.positions[axis] for moon in system.moons] == start_positions[axis]) and all(
+                    [moon.velocities[axis] for moon in system.moons] == start_velocities[axis]):
+                periodicity[axis] = x
+                next_axis.remove(axis)
+        axis = next_axis[:]
+        if not axis:
+            break
+    print(f'AoC 2019 Day 12 Part 2: {np.lcm.reduce(periodicity)}')
+    print()
 
-print(f'AoC 2019 Day 12 Part 2: {np.lcm.reduce(periodicity)}')
-print()
+
+if __name__ == '__main__':
+    main()

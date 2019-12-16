@@ -34,6 +34,7 @@ def main():
         reactions[chemical] = [quantity, inputs]
         chem_qty[chemical] = 0
     chem_qty['ORE'] = 0
+
     fuel_required = 1
     print(f'AoC 2019 Day 14, Part 1: Ore consumed {calculate_ore(reactions, chem_qty, fuel_required)}')
 

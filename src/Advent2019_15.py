@@ -1,58 +1,92 @@
 # Advent of Code 2019
 #
-# From https://adventofcode.com/2019/day/5
+# From https://adventofcode.com/2019/day/15
 #
+from itertools import product
+
 import matplotlib.pyplot as plt
+import networkx as nx
 import numpy as np
 
 from Advent2019_Intcode import Intcode
 
 
+class Robot(object):
+    dX = {1: 0, 2: 0, 3: -1, 4: 1}
+    dY = {1: 1, 2: -1, 3: 0, 4: 0}
+    back = {1: 2, 2: 1, 3: 4, 4: 3}
+
+    def __init__(self, code):
+        self.x = 21
+        self.y = 19
+        self.code = code
+        self.program = Intcode(self.code, inp=[], mode='run')
+        self.stack = []
+        self.found = []
+        self.grid = np.full([41, 41], -1, dtype=int)
+        self.grid[self.x, self.y] = 1
+        self.explore()
+
+    def step(self, direction):
+        self.program.next_inp(direction)
+        result = self.program.run()[0]
+        if result:
+            self.x += Robot.dX[direction]
+            self.y += Robot.dY[direction]
+        return result
+
+    def explore(self):
+        for direction in range(1, 5):
+            if self.grid[self.x + Robot.dX[direction], self.y + Robot.dY[direction]] == -1:
+                result = self.step(direction)
+                if result == 2:
+                    self.found = [self.x, self.y]
+                if result:
+                    self.grid[self.x, self.y] = 1
+                    self.step(Robot.back[direction])
+                    self.stack.append(["N", direction])
+                else:
+                    self.grid[self.x + Robot.dX[direction], self.y + Robot.dY[direction]] = 0
+
+    def move(self):
+        while self.stack:
+            move_type, direction = self.stack.pop()
+            self.step(direction)
+
+            if move_type == "N":
+                self.stack.append(["R", Robot.back[direction]])
+                self.explore()
+
+
 def main():
-    inputs = list(map(int, [code.strip().split(',') for code in open('../inputs2019/Advent2019_11.txt', 'r')][0]))
+    inputs = list(map(int, [code.strip().split(',') for code in open('../inputs2019/Advent2019_15.txt', 'r')][0]))
+    robot = Robot(inputs[:])
+    robot.move()
 
-    grid, boolgrid = painting_robot(inputs, 0)
-    plt.imshow(np.rot90(grid))
+    G = nx.Graph()
+    for x, y in product(range(41), range(41)):
+        if robot.grid[x, y] == 1:
+            if robot.grid[x + 1, y] == 1:
+                G.add_edge((x, y), (x + 1, y))
+            if robot.grid[x, y + 1] == 1:
+                G.add_edge((x, y), (x, y + 1))
+    print(f"AoC 2019 Day 15, Part 1: {nx.shortest_path_length(G, source=(21, 19), target=tuple(robot.found))}")
+
+    longest_path = 0
+    for node in list(G.nodes):
+        path = nx.shortest_path_length(G, source=node, target=tuple(robot.found))
+        if path > longest_path:
+            longest_path = path
+
+    print(f"AoC 2019 Day 15, Part 2: {longest_path}")
+
+    robot.grid[robot.grid == -1] = 0
+    robot.grid[21, 19] = 2
+    robot.grid[robot.found[0], robot.found[1]] = 3
+    plt.imshow(robot.grid)
     plt.axis('off')
     plt.show()
-    print(f'AoC 2019 Day 10, Part 1: {sum(sum(boolgrid))}')
-
-    # print(f'\nAoC 2019 Day 9, Part 2: \n')
-    # Intcode(inputs[:], inp=[2]).run()
-    grid, boolgrid = painting_robot(inputs, 1)
-    idx = np.argwhere(np.all(grid[..., :] == 0, axis=0))
-    grid = np.delete(grid, idx, axis=1)
-    plt.imshow(np.rot90(grid)[:, :45], )
-    plt.axis('off')
-    plt.show()
-
-
-def painting_robot(inputs: list, start: int) -> (np.array, np.array):
-    grid = np.zeros([50, 65], dtype=int)
-    boolgrid = np.zeros([50, 65], dtype=bool)
-    robot_pos = np.array([0, 20])
-    robot_dir = 0
-    directions = np.array([[0, 1], [1, 0], [0, -1], [-1, 0]])
-    terminated = False
-    paint = Intcode(inputs[:], inp=[start], mode='run')
-    while not terminated:
-        colour, terminated = paint.run()
-        grid[tuple(robot_pos)] = colour
-        boolgrid[tuple(robot_pos)] = True
-        direction, terminated = paint.run()
-        if terminated:
-            break
-        if direction == 0:
-            robot_dir -= 1
-        elif direction == 1:
-            robot_dir += 1
-        else:
-            raise ValueError
-        robot_dir %= 4
-        robot_pos += directions[robot_dir]
-        paint.next_inp(grid[tuple(robot_pos)])
-    return grid, boolgrid
 
 
 if __name__ == '__main__':
-    grid = main()
+    main()

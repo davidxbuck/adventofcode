@@ -6,6 +6,7 @@
 # From https://adventofcode.com/2019/day/5
 # From https://adventofcode.com/2019/day/7
 # From https://adventofcode.com/2019/day/9
+# From https://adventofcode.com/2019/day/23
 
 from collections import defaultdict
 class Intcode(object):
@@ -20,6 +21,7 @@ class Intcode(object):
         self.inp = inp
         self.inp_pos = 0
         self.diagnostic = True if mode.lower() == 'diagnostic' else False
+        self.network = True if mode.lower() == 'network' else False
         self.test = True if mode.lower() == 'test' else False
         self.output = -99999
         self.relative_base = 0
@@ -127,6 +129,8 @@ class Intcode(object):
             # print(f"Executing: Ptr:{self.pointer} Offset:{self.relative_base} Op:{operation} Vals:{self.program[self.pointer:self.pointer + 4]} {self.program}")
             self.parm3, self.parm2, self.parm1 = map(int, (operation[0:3]))
             self.opcode = operation[3:5]
+            if self.network and self.opcode == "03" and self.inp_pos == len(self.inp):
+                return "Input", False
             exec(f"self.cmd{self.opcode}()")
             if self.output != -99999:
                 out = self.output

@@ -17,6 +17,7 @@ for ix, x in enumerate(entries):
         break
     for y in range(len(entries) - 1, ix, -1):
         if 2020 - x - entries[y] in entry_set:
-            print(f'AoC 2020 Day 1, Part 1 answer is {x}*{entries[y]}*{2020 - x - entries[y]} = {x * entries[y] * (2020 - x - entries[y])}')
+            print(f"""AoC 2020 Day 1, Part 2 answer is {
+            x}*{entries[y]}*{2020 - x - entries[y]} = {x * entries[y] * (2020 - x - entries[y])}""")
             found = True
             break

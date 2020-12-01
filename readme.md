@@ -10,3 +10,7 @@
 
 ## Code
 The code is has been written using Python 3.8 and unit tests where they exist run under pytest.
+
+## Progress so far
+
+1 ⭐️⭐️

@@ -26,14 +26,14 @@ for ix, x in enumerate(entries):
 
 # Itertools
 
-from itertools import permutations
+from itertools import combinations
 
-for x in permutations(entries, 2):
+for x in combinations(entries, 2):
     if sum(x) == 2020:
         print(f'AoC 2020 Day 1, Part 1 answer is {x} = {x[0] * x[1]}')
         break
 
-for x in permutations(entries, 3):
+for x in combinations(entries, 3):
     if sum(x) == 2020:
         print(f'AoC 2020 Day 1, Part 2 answer is {x} = {x[0] * x[1] * x[2]}')
         break

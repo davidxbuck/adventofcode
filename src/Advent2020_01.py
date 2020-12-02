@@ -2,8 +2,7 @@
 #
 # From https://adventofcode.com/2020/day/1
 #
-entries = list(map(int, [row.strip() for row in open('../inputs2020/Advent2020_01.txt', 'r')]))
-entries.sort()
+entries = sorted(list(map(int, [row.strip() for row in open('../inputs2020/Advent2020_01.txt', 'r')])))
 entry_set = set(entries)
 
 # Manual looping

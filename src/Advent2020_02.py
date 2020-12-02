@@ -4,7 +4,7 @@
 #
 import re
 
-entries = [row.strip() for row in open('../inputs2020/Advent2020_02.txt', 'r')]
+entries = (row.strip() for row in open('../inputs2020/Advent2020_02.txt', 'r'))
 entry_list = [re.findall(r"^(\d+)-(\d+) ([a-z]): ([a-z]+)$", entry)[0] for entry in entries]
 
 print(f"""AoC 2020 Day 2\n Part 1 answer is: {

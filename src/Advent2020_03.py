@@ -2,7 +2,7 @@
 #
 # From https://adventofcode.com/2020/day/3
 #
-from functools import reduce
+from math import prod
 
 import numpy as np
 
@@ -31,4 +31,4 @@ print(f"""AoC 2020 Day 3 Part 1 answer is: {grid.traverse(3, 1)}""")
 
 parameters = ((1, 1), (3, 1), (5, 1), (7, 1), (1, 2))
 trees = [grid.traverse(*param) for param in parameters]
-print(f"""AoC 2020 Day 3 Part 2 answer is: {reduce(lambda a, b: a * b, trees)}""")
+print(f"""AoC 2020 Day 3 Part 2 answer is: {prod(trees)}""")

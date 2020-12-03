@@ -11,17 +11,17 @@ class Grid:
     def __init__(self, filename='03'):
         self.grid = np.array(
             [list(row.strip()) for row in open(f'../inputs2020/Advent2020_{filename}.txt', 'r')]).transpose()
+        self.max_x, self.max_y = self.grid.shape
 
     def traverse(self, x, y):
         x_inc = x
         y_inc = y
-        max_x, max_y = self.grid.shape
         tree_count = 0
 
-        while y < max_y:
+        while y < self.max_y:
             if self.grid[x, y] == '#':
                 tree_count += 1
-            x = (x + x_inc) % max_x
+            x = (x + x_inc) % self.max_x
             y += y_inc
         return tree_count
 

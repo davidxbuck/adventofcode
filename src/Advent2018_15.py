@@ -124,7 +124,7 @@ def main():
     global creatures, grid, dir, grid_size
     dir = np.array([[-1, 0], [0, -1], [0, 1], [1, 0]])
     # Read file and extract dependencies
-    file = open("../inputs/Advent15", 'r')
+    file = open("../inputs2018/Advent15", 'r')
     inputs = [row.strip("\n") for row in file]
 
     grid_size = len(inputs[0])

@@ -3,7 +3,7 @@
 
 # Read file and extract nanobots
 
-file = open("../inputs/Advent25", 'r')
+file = open("../inputs2018/Advent25", 'r')
 stars = [list(map(int, row.strip().split(","))) for row in file]
 neighbours = []
 

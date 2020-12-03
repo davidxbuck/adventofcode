@@ -1,7 +1,7 @@
 # Advent of Code 2018 Day 14
 #
 
-file = open("../inputs/Advent14", 'r')
+file = open("../inputs2018/Advent14", 'r')
 recipes = int(next(file).strip())
 recipelist = [int(i) for i in str(recipes)]
 print("Challenge inputs:", recipes)

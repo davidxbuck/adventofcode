@@ -114,7 +114,7 @@ def visualise_grid(show_drops):
 
 # Read file and extract dependencies
 
-file = open("../inputs/Advent17", 'r')
+file = open("../inputs2018/Advent17", 'r')
 input = [row.strip().split(", ") for row in file]
 x = []
 y = []

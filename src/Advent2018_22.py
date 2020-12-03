@@ -11,7 +11,7 @@ C_Y = 48271
 
 # Read file and extract values
 
-inp = open("../inputs/Advent22", 'r').read().strip()
+inp = open("../inputs2018/Advent22", 'r').read().strip()
 depth, targetx, targety = list(map(int, re.search("depth: (\d+)\ntarget: (\d+),(\d+)", inp).group(1,2,3)))
 maxx = targetx + 1
 maxy = targety + 1

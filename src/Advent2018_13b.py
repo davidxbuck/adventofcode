@@ -4,10 +4,6 @@ import itertools
 from operator import add
 
 import numpy as np
-import turtle
-
-screen = turtle.Screen()
-screen.screensize(canvwidth=160, canvheight=160)
 
 
 class Cart(object):
@@ -20,16 +16,6 @@ class Cart(object):
         self.direction = "^>v<".index(direction)
         self.next_direction = next_turn
         self.crashed = False
-        turtles.append(turtle.Turtle())
-        turtles[self.id].color("white")
-        turtles[self.id].goto((gridsize - x)*3 - 200, y*3 - 200)
-        if self.direction%2 == 0:
-            turtles[self.id].seth(self.direction*90)
-        else:
-            turtles[self.id].seth((4-self.direction)*90)
-        turtles[self.id].color("blue")
-
-
 
     def __str__(self):
         return "Cart {}, position {}, direction {}, next turn is: {}".format(self.id, self.coords,
@@ -48,12 +34,10 @@ class Cart(object):
     def move(self):
         if not self.crashed:
             new_coords = list(map(add, self.coords, dir[self.direction]))
-            turtles[self.id].goto((gridsize - new_coords[0])*3 -200, new_coords[1]*3 -200)
             self.crash_check(new_coords)
             self.x, self.y = new_coords
             if str(grid[self.x, self.y]) in "+/\\":
                 self.turn(grid[self.x, self.y])
-
         return self.crashed
 
     def crash_check(self, new_pos):
@@ -63,8 +47,6 @@ class Cart(object):
                                                                                            tick))
                 self.crashed = cart.crashed = True
                 cart.x = cart.y = self.x = self.y = None
-                turtles[self.id].color("red")
-                turtles[cart.id].color("red")
                 return
 
     def turn(self, way):
@@ -75,7 +57,6 @@ class Cart(object):
         elif way == "+":
             self.direction = (self.direction + self.next_direction) % 4
             self.next_direction = (self.next_direction + 2) % 3 - 1  # next direction
-        turtles[self.id].seth(self.direction * 90)
 
 
 def visualise_grid():
@@ -92,13 +73,12 @@ if __name__ == "__main__":
 
     # Read file and extract dependencies
 
-    file = open("../inputs/Advent13", 'r')
+    file = open("../inputs2018/Advent13", 'r')
     input = [row.replace("\n", "") for row in file]
 
     gridsize = 150
     grid = np.empty([gridsize, gridsize], dtype=str)
     carts = []
-    turtles = []
     dir = [[-1, 0], [0, 1], [1, 0], [0, -1]]
 
     # populate grid with track and extract carts

@@ -7,7 +7,7 @@ from AdventMachine import Registers
 
 if __name__ == "__main__":
 
-    file = open("../inputs/Advent16", 'r')
+    file = open("../inputs2018/Advent16", 'r')
 
     # Extract inputs
 

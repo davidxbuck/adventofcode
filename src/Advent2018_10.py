@@ -11,7 +11,7 @@ from collections import Counter
 
 import matplotlib.pyplot as plt
 
-file = open("../inputs/Advent10", 'r')
+file = open("../inputs2018/Advent10", 'r')
 input = [row for row in file]
 steps = [[int(step[10:16]), int(step[18:24]), int(step[36:38]), int(step[40:42])] for step in input]
 global x, y

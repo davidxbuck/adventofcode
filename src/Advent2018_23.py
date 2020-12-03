@@ -4,7 +4,7 @@
 
 import re
 
-file = open("../inputs/Advent23", 'r')
+file = open("../inputs2018/Advent23", 'r')
 
 nanobots = [list(map(int, re.search("pos=<(-?\d+),(-?\d+),(-?\d+)>, r=(\d+)", row).group(1, 2, 3, 4))) for row in file]
 nanobots = sorted(nanobots, key=lambda x: x[3], reverse=True)

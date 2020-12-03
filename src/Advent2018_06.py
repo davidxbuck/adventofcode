@@ -1,6 +1,6 @@
 # Advent of Code 2018 Day 6
 
-file = open("../inputs/Advent6", 'r')
+file = open("../inputs2018/Advent6", 'r')
 input_list = [row for row in file]
 inputs = []
 

@@ -9,7 +9,7 @@ from collections import defaultdict
 
 # Read file and extract dependencies
 
-file = open("../inputs/Advent7", 'r')
+file = open("../inputs2018/Advent7", 'r')
 input = [row for row in file]
 steps = [[step[5], step[36]] for step in sorted(input)]
 first = [ord(x) - 65 for x, y in steps]

@@ -3,7 +3,7 @@
 
 import numpy as np
 
-file = open("../inputs/Advent18", 'r')
+file = open("../inputs2018/Advent18", 'r')
 input = [row.strip() for row in file]
 dim = len(input)
 

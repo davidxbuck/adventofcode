@@ -33,7 +33,7 @@ def project_growth(generations, initial):
 
 # Read file and extract initial state and patterns
 
-file = open("../inputs/Advent12", 'r')
+file = open("../inputs2018/Advent12", 'r')
 initial = next(file)[15:].strip()
 next(file)
 print("Initial State:", initial)

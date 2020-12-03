@@ -4,7 +4,7 @@
 
 from collections import defaultdict
 
-file = open("../inputs/Advent20", 'r')
+file = open("../inputs2018/Advent20", 'r')
 inp = file.read().strip()[1:-1]
 
 def getitem(s, depth=0):

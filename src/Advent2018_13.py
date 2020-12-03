@@ -7,7 +7,7 @@ import numpy as np
 
 # Read file and extract dependencies
 
-file = open("../inputs/Advent13", 'r')
+file = open("../inputs2018/Advent13", 'r')
 input = [row[:-1] for row in file]
 
 

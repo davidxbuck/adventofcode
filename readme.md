@@ -14,4 +14,5 @@ The code is has been written using Python 3.8 and unit tests where they exist ru
 ## Progress so far
 
 1 ⭐️⭐️ <br/>
-2 ⭐️⭐️
+2 ⭐️⭐️ <br/>
+3 ⭐️⭐️ <br/>

@@ -6,6 +6,7 @@ import re
 
 REQUIRED_FIELDS = ['ecl', 'pid', 'eyr', 'hcl', 'byr', 'iyr', 'hgt']
 
+
 def pass_to_dict(passport):
     pass_dict = {}
     for field in passport:

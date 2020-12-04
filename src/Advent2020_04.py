@@ -44,22 +44,21 @@ def validate_passports(passports, validation='weak'):
 
 
 def strong_validation(field, value):
-    if field == 'byr' and len(value) == 4 and 1920 <= int(value) <= 2002:
-        return True
-    if field == 'iyr' and len(value) == 4 and 2010 <= int(value) <= 2020:
-        return True
-    if field == 'eyr' and len(value) == 4 and 2020 <= int(value) <= 2030:
-        return True
-    if field == 'hgt' and ((value[-2:] == 'cm' and 150 <= int(value[:-2]) <= 193) or (
-            value[-2:] == 'in' and 59 <= int(value[:-2]) <= 76)):
-        return True
-    if field == 'hcl' and bool(re.match(r'^#[a-f0-9]{6}$', value)):
-        return True
-    if field == 'ecl' and value in ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']:
-        return True
-    if field == 'pid' and bool(re.match(r'^\d{9}$', value)):
-        return True
-
+    if field == 'byr':
+        return len(value) == 4 and 1920 <= int(value) <= 2002
+    if field == 'iyr':
+        return len(value) == 4 and 2010 <= int(value) <= 2020
+    if field == 'eyr':
+        return len(value) == 4 and 2020 <= int(value) <= 2030
+    if field == 'hgt':
+        return ((value[-2:] == 'cm' and 150 <= int(value[:-2]) <= 193) or
+                (value[-2:] == 'in' and 59 <= int(value[:-2]) <= 76))
+    if field == 'hcl':
+        return bool(re.match(r'^#[a-f0-9]{6}$', value))
+    if field == 'ecl':
+        return value in ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']
+    if field == 'pid':
+        return bool(re.match(r'^\d{9}$', value))
     return False
 
 

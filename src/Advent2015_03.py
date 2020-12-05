@@ -1,6 +1,6 @@
 # Advent of Code 2015
 #
-# From https://adventofcode.com/2015/day/2
+# From https://adventofcode.com/2015/day/3
 #
 
 inputs = [data.strip() for data in open('../inputs2015/Advent2015_03.txt', 'r')][0]

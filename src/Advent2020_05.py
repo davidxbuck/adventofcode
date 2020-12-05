@@ -5,8 +5,7 @@
 
 def get_seats(filename=''):
     inputs = (row.strip() for row in open(f'../inputs2020/Advent2020_05{filename}.txt', 'r'))
-    seats = map(lambda x: x.translate(str.maketrans("FBRL", "0110")), inputs)
-    return set(map(lambda x: int(x[:7], 2) * 8 + int(x[7:], 2), seats))
+    return set(map(lambda x: int(x.translate(str.maketrans("FBRL", "0110")), 2), inputs))
 
 
 def find_seat(occupied_seats):

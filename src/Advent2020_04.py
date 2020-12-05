@@ -63,5 +63,5 @@ def strong_validation(field, value):
 
 
 passports = get_passports()
-print(f"""AoC 2020 Day 2 Part 1 answer is: {validate_passports(passports)}""")
-print(f"""AoC 2020 Day 2 Part 2 answer is: {validate_passports(passports, validation='strong')}""")
+print(f"""AoC 2020 Day 4 Part 1 answer is: {validate_passports(passports)}""")
+print(f"""AoC 2020 Day 4 Part 2 answer is: {validate_passports(passports, validation='strong')}""")

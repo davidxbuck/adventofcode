@@ -8,39 +8,20 @@ REQUIRED_FIELDS = ['ecl', 'pid', 'eyr', 'hcl', 'byr', 'iyr', 'hgt']
 
 
 def pass_to_dict(passport):
-    pass_dict = {}
-    for field in passport:
-        k, v = field.split(':')
-        pass_dict[k] = v
-    return pass_dict
+    return dict(field.split(':') for field in passport)
 
 
 def get_passports(filename=''):
-    entries = [row for row in open(f'../inputs2020/Advent2020_04{filename}.txt', 'r')]
-    passport = []
-    passports = []
-    for entry in entries:
-        if entry != '\n':
-            passport.extend(entry.strip().split(' '))
-        else:
-            passports.append(pass_to_dict(passport))
-            passport = []
-    if passport:
-        passports.append(pass_to_dict(passport))
-    return passports
+    return [pass_to_dict(" ".join(x.split('\n')).split(" ")) for x in
+            open('../inputs2020/Advent2020_04.txt', 'r').read().split('\n\n')]
 
 
 def validate_passports(passports, validation='weak'):
-    count = 0
-    for passport in passports:
-        valid = True
-        for field in REQUIRED_FIELDS:
-            if field not in passport or (validation == 'strong' and not strong_validation(field, passport[field])):
-                valid = False
-                break
-        if valid:
-            count += 1
-    return count
+    if validation == 'weak':
+        return sum(all(field in passport for field in REQUIRED_FIELDS) for passport in passports)
+    else:
+        return sum(all(field in passport and strong_validation(field, passport[field]) for field in REQUIRED_FIELDS) for
+                   passport in passports)
 
 
 def strong_validation(field, value):

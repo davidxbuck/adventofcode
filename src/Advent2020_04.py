@@ -13,7 +13,7 @@ def pass_to_dict(passport):
 
 def get_passports(filename=''):
     return [pass_to_dict(" ".join(x.split('\n')).split(" ")) for x in
-            open('../inputs2020/Advent2020_04.txt', 'r').read().split('\n\n')]
+            open(f'../inputs2020/Advent2020_04{filename}.txt', 'r').read().split('\n\n')]
 
 
 def validate_passports(passports, validation='weak'):

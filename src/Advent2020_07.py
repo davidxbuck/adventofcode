@@ -22,11 +22,7 @@ target = 'shiny gold'
 # Populate DAG with bags and weights
 
 for outer_bag, inner_bag in bags:
-    if outer_bag not in G:
-        G.add_node(outer_bag)
     if inner_bag[0] != 'no':
-        if inner_bag[1] not in G:
-            G.add_node(inner_bag[1])
         G.add_edge(outer_bag, inner_bag[1], weight=int(inner_bag[0]))
 
 # Find leaf bags

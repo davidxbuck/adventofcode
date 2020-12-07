@@ -1,0 +1,6 @@
+shiny gold bags contain 1 b b bags, 3 c c bags.
+b b bags contain 2 c c bags, 3 d d bags.
+c c bags contain 4 e e bags, 5 f f bags.
+e e bags contain no other bags.
+f f bags contain no other bags.
+d d bags contain 2 cc bags.

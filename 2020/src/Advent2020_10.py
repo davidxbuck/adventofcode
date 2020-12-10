@@ -20,18 +20,15 @@ new = True
 
 for ix, adapter in enumerate(adapters[:-1]):
     if new:
-        graphs.append([nx.DiGraph(), adapter, 0])
-        new = False
+        graphs.append(nx.DiGraph())
     for x in range(1, 4):
         if ix + x > len(adapters) - 1 or adapters[ix + x] - adapter > 3:
             break
-        graphs[-1][0].add_edge(adapter, adapters[ix + x])
-        if x == 1 and adapters[ix + x] - adapter == 3:
-            new = True
-            graphs[-1][2] = adapters[ix + x]
+        graphs[-1].add_edge(adapter, adapters[ix + x])
+        new = x == 1 and adapters[ix + x] - adapter == 3
 
 paths = []
 for graph in graphs:
-    paths.append(len(list(nx.all_simple_paths(graph[0], graph[1], graph[2]))))
+    paths.append(len(list(nx.all_simple_paths(graph, min(graph.nodes), max(graph.nodes)))))
 
 print(f"AoC 2020 Day 10, Part 1 answer is {prod(paths)}")

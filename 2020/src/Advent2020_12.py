@@ -7,7 +7,7 @@ from collections import deque
 
 class Position:
     def __init__(self):
-        self.compass = {"E": 1, "S": 0 - 1j, "W": -1, "N": 0 + 1j}
+        self.compass = {"E": 1, "S": -1j, "W": -1, "N": +1j}
         self.rotation = {"L": 1, "R": -1}
         self.waypoint_rotation = {"R": [1, -1j, -1, 1j], "L": [1, 1j, -1, -1j]}
         self.facing = deque(self.compass.values())

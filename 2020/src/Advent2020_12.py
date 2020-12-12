@@ -17,7 +17,7 @@ class Position:
 
     def get_instructions(self, filename=""):
         self.instructions = \
-            ([(x := row.strip())[0], int(x[1:])] for row in open(f'../inputs/Advent2020_12{filename}.txt', 'r'))
+            [[(x := row.strip())[0], int(x[1:])] for row in open(f'../inputs/Advent2020_12{filename}.txt', 'r')]
 
     def move(self, movement):
         self.action, self.quantity = movement
@@ -41,13 +41,13 @@ class Position:
         self.position = 0
         for movement in self.instructions:
             self.move(movement)
-        print(int(abs(self.position.imag) + abs(self.position.real)))
+        return int(abs(self.position.imag) + abs(self.position.real))
 
     def part2(self):
         self.position = 0
         for movement in self.instructions:
             self.waypoint_move(movement)
-        print(int(abs(self.position.imag) + abs(self.position.real)))
+        return int(abs(self.position.imag) + abs(self.position.real))
 
 
 def main():

@@ -13,12 +13,16 @@ The code is has been written using Python 3.8 and unit tests where they exist ru
 
 ## Progress so far
 
-1 ⭐️⭐️ <br/>
-2 ⭐️⭐️ <br/>
-3 ⭐️⭐️ <br/>
-4 ⭐️⭐️ <br/>
-5 ⭐️⭐️ <br/>
-6 ⭐️⭐️ <br/>
-7 ⭐️⭐️ <br/>
-8 ⭐️⭐️ <br/>
-9 ⭐️⭐️ <br/>
+&nbsp;1 ⭐️⭐️ <br/>
+&nbsp;2 ⭐️⭐️ <br/>
+&nbsp;3 ⭐️⭐️ <br/>
+&nbsp;4 ⭐️⭐️ <br/>
+&nbsp;5 ⭐️⭐️ <br/>
+&nbsp;6 ⭐️⭐️ <br/>
+&nbsp;7 ⭐️⭐️ <br/>
+&nbsp;8 ⭐️⭐️ <br/>
+&nbsp;9 ⭐️⭐️ <br/>
+10 ⭐️⭐️ <br/>
+11 ⭐️⭐️ <br/>
+12 ⭐️⭐️ <br/>
+13 ⭐️⭐️ <br/>

@@ -14,10 +14,9 @@ print(f"AoC 2020 Day 13 Part 1 answer is: {min(next_bus_time) * in_service[next_
 
 # Part 2
 offsets = {int(bus): buses.index(bus) for bus in buses if bus != 'x'}
-ordered_buses = sorted(in_service, reverse=True)
 period = 1
 offset = 0
-for bus in ordered_buses:
+for bus in sorted(in_service, reverse=True):
     next_period = 0
     for x in range(offset, 1000000000000000000000, period):
         if (x + offsets[bus]) % bus == 0:

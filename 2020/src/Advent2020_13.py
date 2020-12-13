@@ -13,17 +13,17 @@ next_bus_time = [(time // x + 1) * x - time for x in in_service]
 print(f"AoC 2020 Day 13 Part 1 answer is: {min(next_bus_time) * in_service[next_bus_time.index(min(next_bus_time))]}")
 
 # Part 2
-offsets = {int(bus): buses.index(bus) for bus in buses if bus != 'x'}
+offsets = {bus: buses.index(str(bus)) for bus in in_service}
 period = 1
 offset = 0
 for bus in sorted(in_service, reverse=True):
-    next_period = 0
+    next_offset = 0
     for x in range(offset, 1000000000000000000000, period):
         if (x + offsets[bus]) % bus == 0:
-            if next_period == 0:
-                next_period = x
+            if next_offset == 0:
+                next_offset = x
             else:
-                offset = next_period
-                period = x - next_period
+                offset = next_offset
+                period = x - next_offset
                 break
 print(f"AoC 2020 Day 13 Part 2 answer is: {offset}")

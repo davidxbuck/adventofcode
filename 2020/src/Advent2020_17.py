@@ -11,12 +11,12 @@ filename = ''
 
 # Inputs
 cubes = np.array(list(list(row.strip()) for row in open(f'../inputs/Advent2020_17{filename}.txt', 'r')))
+
+# 3D
+# Should really set the ranges so that each run only operates over x,y,z space that might contain #, and expand
 array_size = [cubes.shape[0] + padding * 2, cubes.shape[1] + padding * 2, padding * 2 + 1]
 cube_grid = np.full(array_size, '.', dtype=str)
 cube_grid[padding:array_size[0] - padding, padding:array_size[1] - padding, padding] = cubes.copy()
-
-# Part 1
-# Should really set the ranges so that each run only operates over x,y,z space that might contain #, and expand
 for _ in range(loops):
     new_grid = np.full(array_size, '.', dtype=str)
     for x in range(1, array_size[0] - 1):
@@ -30,6 +30,7 @@ for _ in range(loops):
 
 print(f"""AoC 2020 Day 17 Part 1 answer is: {np.count_nonzero(cube_grid == "#")}""")
 
+# 4D
 array_size = [cubes.shape[0] + padding * 2, cubes.shape[1] + padding * 2, padding * 2 + 1, padding * 2 + 1]
 cube_grid = np.full(array_size, '.', dtype=str)
 cube_grid[padding:array_size[0] - padding, padding:array_size[1] - padding, padding, padding] = cubes.copy()

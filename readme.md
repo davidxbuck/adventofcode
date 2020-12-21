@@ -9,7 +9,7 @@
 [Advent of Code](http://adventofcode.com) is an Advent calendar of small programming puzzles, created by [Eric Wastl](https://twitter.com/ericwastl). Each year, starting on Dec 1st, an advent calendar of small programming puzzles are unlocked once a day at 05:00 (UTC).
 
 ## Code
-The code is has been written using Python 3.8 and unit tests where they exist run under pytest. 
+The code is has been written using Python 3.8. 
 
 ## Progress so far
 
@@ -31,3 +31,6 @@ The code is has been written using Python 3.8 and unit tests where they exist ru
 16 ⭐️⭐️ <br/>
 17 ⭐️⭐️ <br/>
 18 ⭐️⭐️ <br/>
+19 ️ <br/>
+20 ⭐️️ <br/>
+21 ⭐️⭐️ <br/>

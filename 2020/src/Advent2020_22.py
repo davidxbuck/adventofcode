@@ -2,8 +2,6 @@
 #
 # From https://adventofcode.com/2020/day/22
 #
-import re
-import numpy as np
 from math import prod
 
 
@@ -22,6 +20,7 @@ def play_1(player1, player2):
             player2.extend([card2, card1])
     return player1 if player1 else player2
 
+
 def play_2(player1, player2):
     play_set = set()
     winner = None
@@ -33,7 +32,7 @@ def play_2(player1, player2):
         card1 = player1.pop(0)
         card2 = player2.pop(0)
         if card1 <= len(player1) and card2 <= len(player2):
-            winner, s1, s2 = play_2(player1[:card1], player2[:card2])
+            winner, _, _ = play_2(player1[:card1], player2[:card2])
         elif card1 > card2:
             winner = 1
         else:
@@ -43,8 +42,6 @@ def play_2(player1, player2):
         else:
             player2.extend([card2, card1])
     return winner, player1, player2
-
-
 
 
 p1, p2 = extract_inputs()

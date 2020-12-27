@@ -70,7 +70,6 @@ print(f"AoC 2019 Day 20, Part 1: {nx.shortest_path_length(G, nodes['AA'][0], nod
 # Create graph. Connect inside portals to outside of new level until path found
 G = nx.Graph()
 offset = 0
-next_offset = 500
 
 while True:
     try:

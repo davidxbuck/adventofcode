@@ -45,7 +45,8 @@ class Bot:
     def execute(self):
         if self.pending and self.full:
             lo_bot, hi_bot = self.queue.pop()
-            return [lo_bot, self.low, hi_bot, self.high]
+            return_vals = [lo_bot, self.low, hi_bot, self.high]
+            return return_vals
 
 
 class Factory:
@@ -84,6 +85,8 @@ class Factory:
                 print(f"Bot {bot} moving {low} to {lo_bot} and {high} to {hi_bot}")
             self.give(lo_bot, low)
             self.give(hi_bot, high)
+            if self.bots[bot].full and self.bots[bot].pending:
+                self.execute(bot)
 
 
 factory = Factory()
@@ -104,12 +107,5 @@ for ix, values in enumerate(data):
         factory.val_bot([bot, hi, low])
         factory.instruct(bot, hi, low)
 
-todo = True
-while todo:
-    todo = False
-    for bot in factory.bots.values():
-        if bot.full and bot.pending:
-            factory.execute(bot.id_)
-            todo = True
 
 print(f"AoC 2016 Day 10, Part 2 answer is {prod(factory.bots[bot].chips[0] for bot in range(1000, 1003))}")

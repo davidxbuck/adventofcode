@@ -2,7 +2,7 @@
 #
 # From https://adventofcode.com/2016/day/16
 
-PUZZLE = "10111011111001111"
+PUZZLE = '10111011111001111'
 
 
 def solve(desired):

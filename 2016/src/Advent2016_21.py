@@ -3,6 +3,9 @@
 # From https://adventofcode.com/2016/day/21
 import re
 
+reg = r"""^(?:(swap position) (\d+) with position (\d+)|(swap letter) (\w) with letter (\w)|(rotate (?:right|left)) (\d+) steps?|(reverse) positions (\d+) through (\d)|(rotate based) on position of letter (\w)|(move) position (\d+) to position (\d+))$"""
+cmds = [[x for x in re.findall(reg, row.strip())[0] if x] for row in open('../inputs/Advent2016_21.txt', 'r')]
+
 
 def forwards(inp):
     inp = list(inp)
@@ -83,9 +86,6 @@ def backwards(inp):
 
 
 def main():
-    global x, cmds
-    reg = r"""^(?:(swap position) (\d+) with position (\d+)|(swap letter) (\w) with letter (\w)|(rotate (?:right|left)) (\d+) steps?|(reverse) positions (\d+) through (\d)|(rotate based) on position of letter (\w)|(move) position (\d+) to position (\d+))$"""
-    cmds = [[x for x in re.findall(reg, row.strip())[0] if x] for row in open('../inputs/Advent2016_21.txt', 'r')]
     part1 = 'abcdefgh'
     print(f"AoC 2016 Day 21, Part 1 answer is {forwards(part1)}")
     part2 = 'fbgdceah'

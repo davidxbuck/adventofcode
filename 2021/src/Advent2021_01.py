@@ -4,7 +4,7 @@
 #
 import pandas as pd
 
-depth_df = pd.DataFrame(map(int, (row.strip() for row in open('../inputs/Advent2021_01.txt', 'r'))), columns=['depth'])
+depth_df = pd.read_csv('../inputs/Advent2021_01.txt', names=["depth"])
 
-print(f'AoC 2021 Day 1, Part 1 answer is {sum(depth_df.diff(axis=0)["depth"] > 0)}')
-print(f'AoC 2021 Day 1, Part 2 answer is {sum(depth_df.rolling(window=3).sum().diff(axis=0)["depth"] > 0)}')
+print(f'Day 1, Part 1 {sum(depth_df.diff(axis=0)["depth"] > 0)}')
+print(f'Day 1, Part 2 {sum(depth_df.rolling(window=3).sum().diff(axis=0)["depth"] > 0)}')

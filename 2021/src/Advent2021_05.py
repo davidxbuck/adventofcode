@@ -29,3 +29,16 @@ for y1, x1, y2, x2 in diagonal:
         identity = np.fliplr(identity)
     grid[tl_x:tl_x + width, tl_y: tl_y + width] += identity
 print(f'Day 4, Part 2 {np.sum(grid > 1)}')
+
+# Visualisation
+
+import matplotlib.pyplot as plt
+
+fig = plt.figure()
+fig.set_size_inches(10, 10)
+ax = plt.Axes(fig, [0., 0., 1., 1.])
+ax.set_axis_off()
+fig.add_axes(ax)
+plt.set_cmap('hot')
+ax.imshow(grid, aspect='equal')
+plt.savefig('Advent2021_05.png', dpi=300)

@@ -1,6 +1,6 @@
 # Advent of Code 2021
 #
-# From https://adventofcode.com/2021/day/1
+# From https://adventofcode.com/2021/day/3
 #
 import numpy as np
 

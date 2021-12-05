@@ -19,11 +19,13 @@ for y1, x1, y2, x2 in up_and_down:
 print(f'Day 4, Part 1 {np.sum(grid > 1)}')
 
 diagonal = [x for x in all_fields if x[0] != x[2] and x[1] != x[3]]
+
 for y1, x1, y2, x2 in diagonal:
-    x_step = 1 if x1 < x2 else -1
-    y_step = 1 if y1 < y2 else -1
-    y = y1
-    for x in range(x1, x2 + x_step, x_step):
-        grid[x, y] += 1
-        y += y_step
+    flip = not ((x1 < x2 and y1 < y2) or (x1 > x2 and y1 > y2))
+    tl_x, tl_y = (min(x1, x2), min(y1, y2))
+    width = abs(x1 - x2) + 1
+    identity = np.identity(width, dtype=int)
+    if flip:
+        identity = np.fliplr(identity)
+    grid[tl_x:tl_x + width, tl_y: tl_y + width] += identity
 print(f'Day 4, Part 2 {np.sum(grid > 1)}')

@@ -25,3 +25,16 @@ for ball in balls:
                 break
     if len(found) == len(grids):
         break
+
+# Visualisation
+
+import matplotlib.pyplot as plt
+
+fig = plt.figure()
+fig.set_size_inches(10, 10)
+ax = plt.Axes(fig, [0., 0., 1., 1.])
+ax.set_axis_off()
+fig.add_axes(ax)
+plt.set_cmap('hot')
+ax.imshow(data, aspect='equal')
+plt.savefig('Adbent2021_05.png', dpi=300)

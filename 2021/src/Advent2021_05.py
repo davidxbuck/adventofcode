@@ -16,7 +16,7 @@ for y1, x1, y2, x2 in up_and_down:
         grid[x1:x2 + 1, y1:y2 + 1] += 1
     else:
         grid[x2:x1 + 1, y2:y1 + 1] += 1
-    print(f'Day 4, Part 1 {np.sum(grid > 1)}')
+print(f'Day 4, Part 1 {np.sum(grid > 1)}')
 
 diagonal = [x for x in all_fields if x[0] != x[2] and x[1] != x[3]]
 for y1, x1, y2, x2 in diagonal:
@@ -26,4 +26,4 @@ for y1, x1, y2, x2 in diagonal:
     for x in range(x1, x2 + x_step, x_step):
         grid[x, y] += 1
         y += y_step
-    print(f'Day 4, Part 2 {np.sum(grid > 1)}')
+print(f'Day 4, Part 2 {np.sum(grid > 1)}')

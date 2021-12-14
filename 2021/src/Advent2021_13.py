@@ -3,8 +3,6 @@
 # From https://adventofcode.com/2021/day/13
 #
 import numpy as np
-import networkx as nx
-from queue import Queue
 import matplotlib.pyplot as plt
 
 inp = [row.strip().split(',') for row in open("../inputs/Advent2021_13.txt", "r")]

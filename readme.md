@@ -1,4 +1,4 @@
-# Advent of Code 2021
+# Advent of Code 2022
 
 [Twitter](https://twitter.com/datascience_fun)
 
@@ -15,18 +15,3 @@ The code has been written using Python 3.10.
 
 &nbsp;1 ⭐️⭐️ <br/>
 &nbsp;2 ⭐️⭐️ <br/>
-&nbsp;3 ⭐️⭐️ <br/>
-&nbsp;4 ⭐️⭐️ <br/>
-&nbsp;5 ⭐️⭐️ <br/>
-&nbsp;6 ⭐️⭐️ <br/>
-&nbsp;7 ⭐️⭐️ <br/>
-&nbsp;8 ⭐️⭐️ <br/>
-&nbsp;9 ⭐️⭐️ <br/>
-10 ⭐️⭐️ <br/>
-11 ⭐️⭐️ <br/>
-12 ⭐️⭐️ <br/>
-13 ⭐️⭐️ <br/>
-14 ⭐️⭐️ <br/>
-15 ⭐️⭐️ <br/>
-16 ️ <br/>
-17 ⭐️⭐️ <br/>

@@ -12,5 +12,5 @@ for x, y in data:
     b = set(range(y[0], y[1] + 1))
     contained.append(True if a | b == a or a | b == b else False)
     overlaps.append(False if len(a) + len(b) == len(a | b) else True)
-print(f'Day 3, Part 1 {sum(contained)}')
-print(f'Day 3, Part 1 {sum(overlaps)}')
+print(f'Day 4, Part 1 {sum(contained)}')
+print(f'Day 4, Part 2 {sum(overlaps)}')
